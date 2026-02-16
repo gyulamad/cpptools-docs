@@ -10,6 +10,8 @@
 - **Class Names**:
   - Use `UpperCaseFirst` (PascalCase, where each word starts with an uppercase letter).
   - Example: `DataPoint`, `TimeSeries`.
+  - **File Naming**: The header file name must match the class name exactly, with `.hpp` extension.
+  - Example: Class `TcpServer` should be in file `TcpServer.hpp`, class `TcpEventListener` in `TcpEventListener.hpp`.
 
 ## Template Typenames
 - Use `T` for the generic data structure type.
