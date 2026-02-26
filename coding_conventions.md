@@ -100,3 +100,12 @@ int main() {
 - These are in-house conventions for some backward compatibility and technical reasons, and it's important to follow them.
 - For single-line `if`, `for`, and `while` statements, omit curly braces `{}` to keep the code concise.
 - The standard compilation command is `${workspaceFolder}/build <source_file> <options>`, where options include `--debug`, `--fast`, `--strict`, and `--test`.
+
+
+**Rule**: Libraries should NEVER set up signal handlers directly using `sigaction()`.
+
+**Why**: 
+- Signal handlers are global to the process
+- Multiple libraries setting handlers would overwrite each other
+- The main application loses control over signal handling
+
