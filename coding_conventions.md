@@ -102,6 +102,42 @@ int main() {
 - The standard compilation command is `${workspaceFolder}/build <source_file> <options>`, where options include `--debug`, `--fast`, `--strict`, and `--test`.
 
 
+## Guard Clauses (Elseless / Early Return Pattern)
+
+Use **guard clauses** (also called *early returns*) instead of deeply nested if-else chains. Place validation checks at the top of functions that immediately return when conditions aren't met—this "fails fast" before doing any real work.
+
+### Benefits
+
+| Benefit | Description |
+|---------|-------------|
+| Reduced cognitive load | Reader handles error cases first, then focuses on happy path |
+| Less indentation | Main logic stays un-nested |
+| Clearer intent | Validates BEFORE processing |
+
+### Example - Without Guard Clauses (Nested)
+
+```cpp
+void process(User* user) {
+    if (user != nullptr) {
+        if (user->isActive()) {
+            // ... actual logic here ...
+        }
+    }
+}
+```
+
+### Example - With Guard Clauses (Early Returns)
+
+```cpp
+void process(User* user) {
+    if (!user) return;              // Guard #1 - fail fast!
+    if (!user->isActive()) return;  // Guard #2
+    
+    // No deep nesting needed for main logic...
+}
+```
+
+
 **Rule**: Libraries should NEVER set up signal handlers directly using `sigaction()`.
 
 **Why**: 
