@@ -145,3 +145,17 @@ void process(User* user) {
 - Multiple libraries setting handlers would overwrite each other
 - The main application loses control over signal handling
 
+## Pointers and memory management
+No smart pointers!
+Use references (&) and raw pointers (*) only.
+References when the value is required and
+pointers when the value can be nullable.
+Getters pattern:
+X& getXRef() { ... }
+X* getXPtr() { ... }
+if getter returns constatnts:
+getXCRef() and getXCPtr() accordingly.
+
+## Error and exception handling
+No supressors! No `catch (...)`
+only re-throw with additional information OR handle properly if it make sense to handle on this level OR leave the exception to propagate itself to the top levels.
