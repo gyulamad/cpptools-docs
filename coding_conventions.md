@@ -83,7 +83,7 @@ int linear_interpolation_search(const vector<T>& data, TKey target, function<TKe
 
 int main() {
     vector<DataPoint> data = { /* Initialize DataPoint objects */ };
-    auto getter = [](const DataPoint& p) { return p.getTimestamp(); };
+    Timestamp getter = [](const DataPoint& p) { return p.getTimestamp(); };
     int index = linear_interpolation_search(data, 1000, getter);
     cout << "Found index: " << index << endl;
     return 0;
@@ -159,3 +159,7 @@ getXCRef() and getXCPtr() accordingly.
 ## Error and exception handling
 No supressors! No `catch (...)`
 only re-throw with additional information OR handle properly if it make sense to handle on this level OR leave the exception to propagate itself to the top levels.
+
+## No auto
+Avoid using `auto` keywords as much as possible,
+use explicit types/class-names etc.
